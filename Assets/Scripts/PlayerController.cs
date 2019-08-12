@@ -53,13 +53,19 @@ public class PlayerController : MonoBehaviour
         Vector2 leftArmData = leftArmInput.Direction.normalized;
         if (leftArmInput.Direction != Vector2.zero)
         {
-            leftAimAngle = -Vector2.SignedAngle(from, leftArmData);
+            leftAimAngle = Vector2.SignedAngle(from, leftArmData);
             //rb.MoveRotation(Quaternion.Euler(0, leftAimAngle, 0));
         }
 
         print("Left aim angle = " + leftAimAngle + ", right aim angle = " + rightAimAngle);
 
         //rb.MoveRotation(Quaternion.Euler(0, Mathf., 0));
+
+        float playerAngle = (Mathf.Max(leftAimAngle, rightAimAngle) + Mathf.Min(leftAimAngle, rightAimAngle)) / 2;
+
+        rb.MoveRotation(Quaternion.Euler(0, playerAngle, 0));
+
+
 
     }
 
