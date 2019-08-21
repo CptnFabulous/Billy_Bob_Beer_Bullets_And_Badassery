@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 6992215019443125352}
   - component: {fileID: 6992215019443125366}
   - component: {fileID: 2883190707674334396}
+  - component: {fileID: 9018341519782693730}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -239,9 +240,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b9ffafe7b33ee469b11cfffa6de362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalColour: {r: 0, g: 0, b: 0, a: 0}
+  criticalColour: {r: 0, g: 0, b: 0, a: 0}
   healthCounter: {fileID: 0}
   ammoCounter: {fileID: 0}
   equippedWeapon: {fileID: 6992215021257011073}
+--- !u!114 &9018341519782693730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992215019443125357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8797ffab55c3c14a88051651e64685d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
+  criticalPercentage: 20
 --- !u!1 &6992215019727570040
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public int maxHealth;
-    public int currentHealth;
-    public float criticalPercentage;
+    public int maxHealth = 100;
+    public int currentHealth = 100;
+    public float criticalPercentage = 20;
 
     int prevHealth;
     

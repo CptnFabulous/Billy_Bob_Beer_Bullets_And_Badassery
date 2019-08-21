@@ -14,10 +14,14 @@ public abstract class Gun : MonoBehaviour
     [Header("Accuracy")]
     [Tooltip("Level of deviation in weapon accuracy from centre of reticle, in degrees.")]
     [Range(0, 180)] public float projectileSpread = 5;
+
+    /* THIS STUFF IS PRESENTLY UNUSED, IT'S SIMPLY COMMENTED OUT IN CASE WE WANT TO ADD RECOIL
     [Tooltip("Amount of recoil applied per shot.")]
     public float recoil = 10;
     [Tooltip("Speed at which camera returns to starting position.")]
     public float recoilRecovery = 10;
+    */
+
     [Tooltip("Maximum range for the gun's raycast check to determine where to launch projectiles. Decrease this value if the weapon is not meant to hit accurately past a certain point.")]
     public float range = 500;
     [Tooltip("What layers will the raycast check and launched projectiles register?")]
@@ -53,20 +57,17 @@ public abstract class Gun : MonoBehaviour
     }
 #endif
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    
 
     // Update is called once per frame
     void Update()
     {
-        fireTimer += Time.deltaTime;
+        fireTimer += Time.deltaTime; // fireTimer counts up to determine when next shot can be fired
 
+        // If gun aiming analog stick is pressed, appropriate delay has passed since previous shot, burst count is not exceeded and ammo is present
         if (input.Direction != Vector2.zero && fireTimer >= 60 / roundsPerMinute && (shotsInBurst < burstCount || burstCount <= 0) && roundsInMagazine > 0)
         {
-            Shoot();
+            Shoot(); // Shoot gun
         }
     }
 
@@ -80,8 +81,7 @@ public abstract class Gun : MonoBehaviour
         {
             shotsInBurst += 1; // Adds number to burst count
         }
-        roundsInMagazine -= ammoPerShot;
-        //ammoSupply.Spend(caliber, ammoPerShot); // Spends appropriate ammunition type
+        roundsInMagazine -= ammoPerShot; // Ammo is subtracted
         fireTimer = 0; // Reset fire timer to count up to next shot
         // Cosmetic effects are done in another derived class, for different cosmetic effects.
     }
@@ -89,7 +89,7 @@ public abstract class Gun : MonoBehaviour
     public virtual void LaunchProjectile()
     {
         targetRay.origin = transform.position;
-        targetRay.direction = Quaternion.Euler(Random.Range(-projectileSpread, projectileSpread), Random.Range(-projectileSpread, projectileSpread), Random.Range(-projectileSpread, projectileSpread)) * transform.forward;
+        targetRay.direction = Quaternion.Euler(0, Random.Range(-projectileSpread, projectileSpread), 0) * transform.forward;
         if (Physics.Raycast(targetRay, out targetFound, range, rayDetection))
         {
             target = targetFound.point;

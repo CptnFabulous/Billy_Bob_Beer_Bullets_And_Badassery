@@ -51,7 +51,11 @@ public class Bullet : MonoBehaviour
 
     void OnHit()
     {
-        
+        Health targetHealth = bulletHit.collider.GetComponent<Health>();
+        if (targetHealth != null)
+        {
+            targetHealth.Damage(damage);
+        }
         // do stuff like deal damage, cosmetic effects
         Destroy(gameObject);
     }
