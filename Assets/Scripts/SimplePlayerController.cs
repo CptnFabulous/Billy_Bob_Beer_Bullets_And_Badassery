@@ -40,7 +40,7 @@ public class SimplePlayerController : MonoBehaviour
         if (aimInput.Direction != Vector2.zero)
         {
             aimAngle = -Vector2.SignedAngle(from, aimData);
-            rb.MoveRotation(Quaternion.Euler(0, aimAngle, 0));
+            transform.rotation = Quaternion.Euler(0, aimAngle, 0);
         }
 
         movementInput = moveInput.Direction;
