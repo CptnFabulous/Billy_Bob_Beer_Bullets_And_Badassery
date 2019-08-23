@@ -91,7 +91,6 @@ GameObject:
   - component: {fileID: 6992215019443125355}
   - component: {fileID: 6992215019443125356}
   - component: {fileID: 6992215019443125367}
-  - component: {fileID: 6992215019443125352}
   - component: {fileID: 6992215019443125366}
   - component: {fileID: 9018341519782693730}
   - component: {fileID: 6410071640811166230}
@@ -99,7 +98,7 @@ GameObject:
   - component: {fileID: 1609208541192113159}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,24 +193,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &6992215019443125352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6992215019443125357}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca35ef7a80c12984bbb2c00645cb9270, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  relativePosition: {x: 0, y: 30, z: 0}
-  rightArmInput: {fileID: 0}
-  leftArmInput: {fileID: 0}
-  rightArmPivot: {fileID: 0}
-  leftArmPivot: {fileID: 0}
 --- !u!114 &6992215019443125366
 MonoBehaviour:
   m_ObjectHideFlags: 0

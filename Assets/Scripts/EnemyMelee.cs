@@ -28,14 +28,35 @@ public class EnemyMelee : MonoBehaviour
     RaycastHit meleeHitDetection;
 
 
-    
+    //int ct;
 
-    
+
     // Start is called before the first frame update
     void Start()
     {
         na = GetComponent<NavMeshAgent>();
         //na.speed = movementSpeed;
+
+        if (targetedCharacter == null)
+        {
+            FindTarget(); // Look for target
+        }
+    }
+
+    void FindTarget()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player"); // Finds all objects tagged Player
+        int ct = 0;
+        for(int i = 0; i < players.Length - 1; i++) // Checks each object
+        {
+            float gd = Vector3.Distance(transform.position, players[i].transform.position); // Distance between transform and currently processed target
+            float cd = Vector3.Distance(transform.position, players[ct].transform.position); // Distance between transform and current closest target
+            if (gd < cd || (gd == cd && Mathf.RoundToInt(Random.value) == 1)) // If currently processed target is closer, OR the two distances are the same, in which case it is randomly decided whether to declare a new closest target or not
+            {
+                ct = i; // New closest target
+            }
+        }
+        targetedCharacter = players[ct]; // Index ct is used to determine closest target and assign to GameObject t;
     }
 
     // Update is called once per frame
