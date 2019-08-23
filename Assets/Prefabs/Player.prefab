@@ -93,8 +93,10 @@ GameObject:
   - component: {fileID: 6992215019443125367}
   - component: {fileID: 6992215019443125352}
   - component: {fileID: 6992215019443125366}
-  - component: {fileID: 2883190707674334396}
   - component: {fileID: 9018341519782693730}
+  - component: {fileID: 6410071640811166230}
+  - component: {fileID: 2883190707674334396}
+  - component: {fileID: 1609208541192113159}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -225,26 +227,9 @@ MonoBehaviour:
   moveInput: {fileID: 0}
   aimInput: {fileID: 0}
   playerCamera: {fileID: 0}
-  relativePosition: {x: 0, y: 30, z: 0}
+  relativePosition: {x: 0, y: 20, z: 0}
   rotateSpeed: 0
   movementSpeed: 10
---- !u!114 &2883190707674334396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6992215019443125357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b9ffafe7b33ee469b11cfffa6de362, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalColour: {r: 0, g: 0, b: 0, a: 0}
-  criticalColour: {r: 0, g: 0, b: 0, a: 0}
-  healthCounter: {fileID: 0}
-  ammoCounter: {fileID: 0}
-  equippedWeapon: {fileID: 6992215021257011073}
 --- !u!114 &9018341519782693730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +245,48 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   criticalPercentage: 20
+--- !u!114 &6410071640811166230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992215019443125357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11cdfa8f9c779584283b15bd24e00f5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightHandGun: {fileID: 6992215021257011073}
+--- !u!114 &2883190707674334396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992215019443125357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b9ffafe7b33ee469b11cfffa6de362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalColour: {r: 1, g: 1, b: 1, a: 1}
+  criticalColour: {r: 1, g: 0, b: 0, a: 1}
+  healthCounter: {fileID: 0}
+  ammoCounter: {fileID: 0}
+  equippedWeapon: {fileID: 6992215021257011073}
+--- !u!114 &1609208541192113159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992215019443125357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47629946cb4a894ca88709d49b7ee35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6992215019727570040
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,8 +703,6 @@ MonoBehaviour:
   input: {fileID: 0}
   damage: 10
   projectileSpread: 5
-  recoil: 10
-  recoilRecovery: 10
   range: 500
   rayDetection:
     serializedVersion: 2

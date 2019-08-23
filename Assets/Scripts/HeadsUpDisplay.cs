@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof (PlayerHealth))]
+[RequireComponent(typeof (WeaponHandler))]
 
 public class HeadsUpDisplay : MonoBehaviour
 {
@@ -12,14 +13,15 @@ public class HeadsUpDisplay : MonoBehaviour
 
     [Header("Health")]
     public Text healthCounter;
+    PlayerHealth ph;
 
     [Header("Weapon")]
     public Text ammoCounter;
-    public Gun equippedWeapon;
+    WeaponHandler wh;
 
 
 
-    PlayerHealth ph;
+    
 
     /*
     // Start is called before the first frame update
@@ -32,12 +34,13 @@ public class HeadsUpDisplay : MonoBehaviour
     private void Awake()
     {
         ph = GetComponent<PlayerHealth>();
+        wh = GetComponent<WeaponHandler>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ammoCounter.text = (equippedWeapon.roundsInMagazine + "/" + equippedWeapon.magazineCapacity);
+        ammoCounter.text = (wh.rightHandGun.roundsInMagazine + "/" + wh.rightHandGun.magazineCapacity);
         healthCounter.text = (ph.currentHealth + "/" + ph.maxHealth);
         if (ph.currentHealth <= ph.maxHealth / 100 * ph.criticalPercentage)
         {
