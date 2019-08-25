@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 9018341519782693730}
   - component: {fileID: 6410071640811166230}
   - component: {fileID: 2883190707674334396}
+  - component: {fileID: 2039184570236244185}
   - component: {fileID: 1609208541192113159}
   m_Layer: 0
   m_Name: Player
@@ -255,6 +256,19 @@ MonoBehaviour:
   criticalColour: {r: 1, g: 0, b: 0, a: 1}
   healthCounter: {fileID: 0}
   ammoCounter: {fileID: 0}
+--- !u!114 &2039184570236244185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6992215019443125357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087aa61c8c668894eb6b91384f5dd1ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuUI: {fileID: 0}
 --- !u!114 &1609208541192113159
 MonoBehaviour:
   m_ObjectHideFlags: 0
