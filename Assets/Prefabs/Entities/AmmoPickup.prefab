@@ -136,4 +136,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountRestored: 10
-  consumeAll: 0
+  consumeAll: 1
