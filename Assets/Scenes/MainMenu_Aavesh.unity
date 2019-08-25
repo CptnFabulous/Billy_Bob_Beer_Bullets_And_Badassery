@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -695,7 +695,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 25.684002}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213.89, y: -28.1}
+  m_AnchoredPosition: {x: -176, y: -4}
   m_SizeDelta: {x: 267.45, y: 54.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282261799
@@ -731,7 +731,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Billly Bob Beer Bullets And Badassery
+  m_Text: 'Billly Bob:  Beer Bullets And Badassery'
 --- !u!222 &1282261800
 CanvasRenderer:
   m_ObjectHideFlags: 0
