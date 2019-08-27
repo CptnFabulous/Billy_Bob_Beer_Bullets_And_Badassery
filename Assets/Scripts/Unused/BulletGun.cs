@@ -21,7 +21,7 @@ public class BulletGun : Gun
         base.Shoot();
 
         // Play appropriate firing animations
-        //muzzleFlash.Play();
+        muzzleFlash.Play();
         //shellEjection.Play();
 
     }

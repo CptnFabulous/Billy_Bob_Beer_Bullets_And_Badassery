@@ -95,7 +95,7 @@ public class EnemyMelee : MonoBehaviour
         */
     }
 
-    void MeleeAttack() // DOES NOT WORK PROPERLY, THE PROBLEM SEEMS TO BE WITH THE RAYCAST
+    void MeleeAttack()
     {
         if (Vector3.Distance(transform.position, targetedCharacter.transform.position) <= meleeExecuteRange && isMeleeAttacking == false && meleeCooldownTimer >= meleeCooldown)
         {
@@ -105,7 +105,7 @@ public class EnemyMelee : MonoBehaviour
             na.enabled = false;
             enemyAttackDirection = new Vector3(targetedCharacter.transform.position.x, transform.position.y, targetedCharacter.transform.position.z);
             transform.LookAt(enemyAttackDirection);
-            enemyAttackDirection = targetedCharacter.transform.position - transform.position;
+            enemyAttackDirection = targetedCharacter.transform.position - head.transform.position;
             isMeleeAttacking = true;
             meleeDelayTimer = 0;
         }
@@ -118,7 +118,7 @@ public class EnemyMelee : MonoBehaviour
             {
                 print("Raycast launched");
 
-                if (Physics.Raycast(transform.position, enemyAttackDirection, out meleeHitDetection, meleeAttackRange))
+                if (Physics.Raycast(head.transform.position, enemyAttackDirection, out meleeHitDetection, meleeAttackRange))
                 {
                     print("Raycast hit");
                     Health targetHealth = meleeHitDetection.collider.GetComponent<Health>();
