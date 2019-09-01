@@ -7,7 +7,7 @@ public class ObjectiveHandler : MonoBehaviour
 {
     [Header("Condition markers")]
     public Spawner enemySpawner;
-    public GameObject enemyToDefeat;
+    public string enemyTag;
     PlayerHealth player;
 
     [Header("Menus")]
@@ -27,20 +27,33 @@ public class ObjectiveHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemySpawner.amountToSpawn <= 0 && GameObject.Find(enemyToDefeat.name) == null)
+        print(enemySpawner.amountToSpawn + "/" + GameObject.FindGameObjectsWithTag(enemyTag).Length);
+        if (enemySpawner.amountToSpawn <= 0 && GameObject.FindGameObjectsWithTag(enemyTag) == null)
         {
             //Game is won
-            headsUpDisplay.enabled = false;
-            pauseMenu.enabled = false;
-            failMenu.enabled = false;
-            winMenu.enabled = true;
+            print("Game won");
+            WinGame();
         }
         else if(player.currentHealth <= 0)
         {
-            headsUpDisplay.enabled = false;
-            pauseMenu.enabled = false;
-            winMenu.enabled = false;
-            failMenu.enabled = true;
+            print("Game lost");
+            FailScreen();
         }
+    }
+
+    void WinGame()
+    {
+        headsUpDisplay.enabled = false;
+        pauseMenu.enabled = false;
+        failMenu.enabled = false;
+        winMenu.enabled = true;
+    }
+
+    void FailScreen()
+    {
+        headsUpDisplay.enabled = false;
+        pauseMenu.enabled = false;
+        winMenu.enabled = false;
+        failMenu.enabled = true;
     }
 }
