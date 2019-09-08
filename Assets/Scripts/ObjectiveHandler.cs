@@ -10,6 +10,8 @@ public class ObjectiveHandler : MonoBehaviour
     public string enemyTag;
     PlayerHealth player;
 
+    [HideInInspector] public int remainingAliens;
+
     [Header("Menus")]
     public Canvas headsUpDisplay;
     public Canvas pauseMenu;
@@ -27,33 +29,41 @@ public class ObjectiveHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        remainingAliens = enemySpawner.amountToSpawn + GameObject.FindGameObjectsWithTag(enemyTag).Length;
         print(enemySpawner.amountToSpawn + "/" + GameObject.FindGameObjectsWithTag(enemyTag).Length);
-        if (enemySpawner.amountToSpawn <= 0 && GameObject.FindGameObjectsWithTag(enemyTag) == null)
+        if (remainingAliens <= 0)
         {
             //Game is won
-            print("Game won");
+            
             WinGame();
         }
         else if(player.currentHealth <= 0)
         {
-            print("Game lost");
+            
             FailScreen();
         }
     }
 
     void WinGame()
     {
-        headsUpDisplay.enabled = false;
-        pauseMenu.enabled = false;
-        failMenu.enabled = false;
-        winMenu.enabled = true;
+        print("Game won");
+        headsUpDisplay.gameObject.SetActive(false);
+        print("a");
+        pauseMenu.gameObject.SetActive(false);
+        print("b");
+        failMenu.gameObject.SetActive(false);
+        print("c");
+        winMenu.gameObject.SetActive(true);
+        print("d");
+        
     }
 
     void FailScreen()
     {
-        headsUpDisplay.enabled = false;
-        pauseMenu.enabled = false;
-        winMenu.enabled = false;
-        failMenu.enabled = true;
+        print("Game lost");
+        headsUpDisplay.gameObject.SetActive(false);
+        pauseMenu.gameObject.SetActive(false);
+        winMenu.gameObject.SetActive(false);
+        failMenu.gameObject.SetActive(true);
     }
 }

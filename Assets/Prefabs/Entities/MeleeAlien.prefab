@@ -62,7 +62,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -103,11 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 8864863297657668512}
   targetedCharacter: {fileID: 0}
-  meleeDamage: 10
+  meleeDamage: 20
   meleeExecuteRange: 2
   meleeAttackRange: 3
   meleeAttackDelay: 0.5
-  meleeCooldown: 1
+  meleeCooldown: 0.25
 --- !u!1 &6052183924680556570
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,13 +133,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6052183924680556570}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 1.69, z: 0.6}
-  m_LocalScale: {x: 0.3, y: 1, z: 0.3}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.34, y: 1.148, z: 0.39}
+  m_LocalScale: {x: 0.08, y: 1, z: 0.2}
   m_Children: []
   m_Father: {fileID: 5979204447769563533}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!33 &3295497500547583672
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -985,7 +985,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0, g: 1, b: 0, a: 1}
   m_Intensity: 2
-  m_Range: 10
+  m_Range: 50
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:

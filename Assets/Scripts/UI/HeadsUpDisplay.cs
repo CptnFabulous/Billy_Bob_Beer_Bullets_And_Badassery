@@ -19,6 +19,10 @@ public class HeadsUpDisplay : MonoBehaviour
     public Text ammoCounter;
     WeaponHandler wh;
 
+    [Header("Objectives")]
+    public Text objectiveList;
+    ObjectiveHandler oh;
+
 
 
     
@@ -35,6 +39,7 @@ public class HeadsUpDisplay : MonoBehaviour
     {
         ph = GetComponent<PlayerHealth>();
         wh = GetComponent<WeaponHandler>();
+        oh = GetComponent<ObjectiveHandler>();
     }
 
     // Update is called once per frame
@@ -50,6 +55,8 @@ public class HeadsUpDisplay : MonoBehaviour
         {
             healthCounter.color = normalColour;
         }
+
+        objectiveList.text = (oh.remainingAliens + " ALIENS REMAIN");
 
     }
 }

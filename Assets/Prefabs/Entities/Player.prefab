@@ -180,7 +180,7 @@ MonoBehaviour:
   pauseButton: {fileID: 0}
   resumeButton: {fileID: 0}
   quitButton: {fileID: 0}
-  mainMenuScene: MainMenu_Aavesh
+  mainMenuScene: MainMenu
 --- !u!114 &8074022177767473689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,8 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemySpawner: {fileID: 0}
-  enemyToDefeat: {fileID: 0}
-  player: {fileID: 0}
+  enemyTag: 
   headsUpDisplay: {fileID: 0}
   pauseMenu: {fileID: 0}
   winMenu: {fileID: 0}

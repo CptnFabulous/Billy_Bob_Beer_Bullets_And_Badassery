@@ -332,7 +332,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: YOU HAVE SUCCUMBED TO THE ALIEN MENACE
+  m_Text: YOU HAVE SUCCUMBED TO THE ALIEN MENACE!
 --- !u!1 &7299883768755604960
 GameObject:
   m_ObjectHideFlags: 0
