@@ -40,6 +40,8 @@ public abstract class Gun : MonoBehaviour
     float fireTimer = 9999999999;
     float shotsInBurst;
 
+    bool frameDelay;
+
     [Header("Ammunition")]
     [Tooltip("How many units of ammunition are consumed per shot.")]
     public int ammoPerShot = 1;
@@ -67,7 +69,15 @@ public abstract class Gun : MonoBehaviour
         // If gun aiming analog stick is pressed, appropriate delay has passed since previous shot, burst count is not exceeded and ammo is present
         if (input.Direction != Vector2.zero && fireTimer >= 60 / roundsPerMinute && (shotsInBurst < burstCount || burstCount <= 0) && roundsInMagazine > 0)
         {
-            Shoot(); // Shoot gun
+            if (frameDelay == true)
+            {
+                Shoot(); // Shoot gun
+            }
+            frameDelay = true;
+        }
+        else
+        {
+            frameDelay = false;
         }
     }
 
