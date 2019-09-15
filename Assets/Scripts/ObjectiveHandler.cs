@@ -6,13 +6,13 @@ using UnityEngine;
 public class ObjectiveHandler : MonoBehaviour
 {
     [Header("Condition markers")]
-    public Spawner enemySpawner;
-    public string enemyTag;
-    PlayerHealth player;
+    public Spawner enemySpawner; // Used to check how many aliens need to be spawned
+    public string enemyTag; // Used to check for aliens that already exist in the level
+    PlayerHealth player; // used to check if player has died
 
-    [HideInInspector] public int remainingAliens;
+    [HideInInspector] public int remainingAliens; // How many more aliens need to be killed to win game
 
-    [Header("Menus")]
+    [Header("Menus")] // Self explanatory
     public Canvas headsUpDisplay;
     public Canvas pauseMenu;
     public Canvas winMenu;
@@ -29,37 +29,33 @@ public class ObjectiveHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        remainingAliens = enemySpawner.amountToSpawn + GameObject.FindGameObjectsWithTag(enemyTag).Length;
-        print(enemySpawner.amountToSpawn + "/" + GameObject.FindGameObjectsWithTag(enemyTag).Length);
-        if (remainingAliens <= 0)
+        remainingAliens = enemySpawner.amountToSpawn + GameObject.FindGameObjectsWithTag(enemyTag).Length; // Finds enemies currently in the level, plus enemies that have not yet spawned, to determine how many more aliens the player needs to defeat
+        //print(enemySpawner.amountToSpawn + "/" + GameObject.FindGameObjectsWithTag(enemyTag).Length);
+        if (remainingAliens <= 0) // If all aliens have been killed
         {
-            //Game is won
             
-            WinGame();
+            WinGame(); //Display win screen
         }
-        else if(player.currentHealth <= 0)
+        else if(player.currentHealth <= 0) // If player dies
         {
             
-            FailScreen();
+            FailScreen(); // Display fail screen
         }
     }
 
     void WinGame()
     {
+        // Disable all menus except for win screen
         print("Game won");
         headsUpDisplay.gameObject.SetActive(false);
-        print("a");
         pauseMenu.gameObject.SetActive(false);
-        print("b");
         failMenu.gameObject.SetActive(false);
-        print("c");
         winMenu.gameObject.SetActive(true);
-        print("d");
-        
     }
 
     void FailScreen()
     {
+        // Disable all menus except for fail screen
         print("Game lost");
         headsUpDisplay.gameObject.SetActive(false);
         pauseMenu.gameObject.SetActive(false);

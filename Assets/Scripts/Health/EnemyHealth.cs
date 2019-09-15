@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : Health
 {
+    /*
     public override void Damage(int damageAmount)
     {
         base.Damage(damageAmount);
@@ -21,4 +22,5 @@ public class EnemyHealth : Health
         // play death animations, drop items, add to score etc.. Remove the base.Die() part if you want a persistent corpse.
         base.Die();
     }
+    */
 }

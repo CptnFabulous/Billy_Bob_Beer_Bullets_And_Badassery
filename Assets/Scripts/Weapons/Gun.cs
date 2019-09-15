@@ -88,9 +88,10 @@ public abstract class Gun : MonoBehaviour
 
     public virtual void LaunchProjectile()
     {
+        // Launches raycast from player towards enemy, influenced by projectileSpread variable
         targetRay.origin = transform.position;
         targetRay.direction = Quaternion.Euler(0, Random.Range(-projectileSpread, projectileSpread), 0) * transform.forward;
-        if (Physics.Raycast(targetRay, out targetFound, range, rayDetection))
+        if (Physics.Raycast(targetRay, out targetFound, range, rayDetection)) // Sets target position to targetFound.point, or forward a long distance if no target is found
         {
             target = targetFound.point;
         }

@@ -45,9 +45,9 @@ public class HeadsUpDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammoCounter.text = (wh.rightHandGun.roundsInMagazine + "/" + wh.rightHandGun.magazineCapacity);
-        healthCounter.text = (ph.currentHealth + "/" + ph.maxHealth);
-        if (ph.currentHealth <= ph.maxHealth / 100 * ph.criticalPercentage)
+        ammoCounter.text = (wh.rightHandGun.roundsInMagazine + "/" + wh.rightHandGun.magazineCapacity); // Displays remaining ammo on counter
+        healthCounter.text = (ph.currentHealth + "/" + ph.maxHealth); // Displays remaining health on counter
+        if (ph.currentHealth <= ph.maxHealth / 100 * ph.criticalPercentage) // Checks status of health and displays appropriate colour
         {
             healthCounter.color = criticalColour;
         }
@@ -56,7 +56,22 @@ public class HeadsUpDisplay : MonoBehaviour
             healthCounter.color = normalColour;
         }
 
-        objectiveList.text = (oh.remainingAliens + " ALIENS REMAIN");
+        string objectiveText = ""; // Prepares objective message
+        if (oh.remainingAliens == 1) // Displays number of aliens remaining to defeat, two variants to display appropriate grammar based on number of aliens
+        {
+            objectiveText += (oh.remainingAliens + " ALIEN REMAINS");
+        }
+        else
+        {
+            objectiveText += (oh.remainingAliens + " ALIENS REMAIN");
+        }
+        float aa = GameObject.FindGameObjectsWithTag(oh.enemyTag).Length;
+        if (aa > 0) // Checks how many aliens are currently in the level, if so, adds text to objective message showing number of aliens currently attacking the player
+        {
+            objectiveText += (", " + aa + " ATTACKING");
+        }
+        objectiveList.text = objectiveText; // Displays objective message
+        
 
     }
 }

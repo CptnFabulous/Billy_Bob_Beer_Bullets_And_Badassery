@@ -19,28 +19,33 @@ public class Spawner : MonoBehaviour
     public float spawnRadius;
     [Tooltip("Time between spawning")]
     public float spawnDelay;
-    float spawnTimer = 99999999;
+    float spawnTimer; // Used to count up to the next spawn
     
+    /*
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    */
 
     // Update is called once per frame
     void Update()
     {
-        spawnTimer += Time.deltaTime;
-        if (spawnTimer >= spawnDelay && (amountToSpawn > 0 || spawnInfinitely == true))
+        spawnTimer += Time.deltaTime; // Spawn timer counts up
+        if (spawnTimer >= spawnDelay && (amountToSpawn > 0 || spawnInfinitely == true)) // If spawn has delayed for long enough and there are remaining objects to spawn OR the spawner is set to spawn infinitely
         {
-            for (int i = 0; i < spawnBatchSize; i++)
+            for (int i = 0; i < spawnBatchSize; i++) // Spawns multiple times based on spawnBatchSize variable
             {
-                Vector3 spawnVector = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].position + Random.insideUnitSphere * spawnRadius;
-                Instantiate(objectToSpawn, spawnVector, Quaternion.identity);
-                spawnTimer = 0;
+                // Randomly selects a spawn point, then spawns the gameObject within a short vicinity of said spawn point to ensure they are not spawned inside each other.
+                Vector2 sr = Random.insideUnitCircle * spawnRadius;
+                Vector3 sz = new Vector3(sr.x, 0, sr.y);
+                Vector3 spawnVector = spawnLocations[Random.Range(0, spawnLocations.Length - 1)].position + sz;
+                Instantiate(objectToSpawn, spawnVector, Quaternion.identity); // Instantiates the gameObject at the specified spawn position.
+                spawnTimer = 0; // Resets spawn timer to count up for the next spawn
                 if (spawnInfinitely == false)
                 {
-                    amountToSpawn -= 1;
+                    amountToSpawn -= spawnBatchSize; // Depletes from amount spawned
                 }
             }
             

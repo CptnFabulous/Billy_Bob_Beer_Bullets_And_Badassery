@@ -19,19 +19,20 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        // Adds listeners for pause, resume and quit buttons
         pauseButton.onClick.AddListener(Pause);
         resumeButton.onClick.AddListener(Resume);
         quitButton.onClick.AddListener(() => LoadScene(mainMenuScene));
 
-        Resume();
+        Resume(); // Unpauses game
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape)) // When pause button is pressed
         {
-            if(GameIsPaused)
+            if(GameIsPaused) // Checks whether game is paused or not, and pauses or unpauses appropriately
             {
                 Resume();
             }
@@ -46,6 +47,7 @@ public class PauseMenu : MonoBehaviour
 
     void Resume()
     {
+        // Disables pause menu, reenables heads up display and unfreezes time
         pauseMenuUI.SetActive(false);
         hudUI.SetActive(true);
         Time.timeScale = 1f;
@@ -54,24 +56,29 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        // Enables pause menu, disables heads up display and freezes time
         hudUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
 
+    
+
+    public void LoadScene(string sceneName) // Loads the scene.
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    /*
     public void LoadMenu()
     {
         Debug.Log("Loading Game");
-    }
-
-    public void LoadScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
     }
 
     public void ExitGame()
     {
         Debug.Log("Exitting Game");
     }
+    */
 }

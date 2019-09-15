@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
     Ray bulletRay; // Raycast launched to determine shot direction
     RaycastHit bulletHit; // Point where raycast hits target
     [HideInInspector] public LayerMask rayDetection; // LayerMask ensuring raycast does not hit player's own body
+    float raycastLength;
 
     public float projectileLifetime;
     float timerLifetime;
@@ -32,8 +33,8 @@ public class Bullet : MonoBehaviour
         bulletRay.origin = transform.position;
         bulletRay.direction = transform.forward;
 
-        float raycastLength = velocity * Time.deltaTime;
-        if (Physics.SphereCast(bulletRay, diameter / 2, out bulletHit, raycastLength, rayDetection))
+        raycastLength = velocity * Time.deltaTime; // Determines how long the raycast should be
+        if (Physics.SphereCast(bulletRay, diameter / 2, out bulletHit, raycastLength, rayDetection)) // Launches raycast, if it hits an object do appropriate hit functions, if not move bullet
         {
             OnHit();
         }
@@ -42,6 +43,7 @@ public class Bullet : MonoBehaviour
             MoveBullet();
         }
 
+        // Counts up lifetime timer and destroys gameObject if it has been existing for too long, so they do not clutter up the level.
         timerLifetime += Time.deltaTime;
         if (timerLifetime >= projectileLifetime)
         {
@@ -51,17 +53,17 @@ public class Bullet : MonoBehaviour
 
     void OnHit()
     {
-        Health targetHealth = bulletHit.collider.GetComponent<Health>();
-        if (targetHealth != null)
+        Health targetHealth = bulletHit.collider.GetComponent<Health>(); // Checks for health script
+        if (targetHealth != null) // If present
         {
-            targetHealth.Damage(damage);
+            targetHealth.Damage(damage); // Damage object
         }
         // do stuff like deal damage, cosmetic effects
-        Destroy(gameObject);
+        Destroy(gameObject); // Destroy bullet
     }
 
-    void MoveBullet()
+    void MoveBullet() // Moves bullet forward the exact distance as the raycast launched previously, to ensure it moves forward at the correct rate and no section of the bullet's flight path is unchecked
     {
-        transform.position += transform.forward * velocity * Time.deltaTime;
+        transform.position += transform.forward * raycastLength;
     }
 }
